@@ -1,4 +1,6 @@
-Final project pour JEE lecture.
+﻿## Final project pour JEE lecture.
+
+Perraudeau Victor & Leroux Alexis
 
 ## Projet final
 
