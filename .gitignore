@@ -6,5 +6,4 @@
 # Maven
 log/
 
-target/classes/META-INF/maven/JEE/ProjetFinal/pom.properties
-target/classes/META-INF/MANIFEST.MF
+target/
