@@ -11,7 +11,7 @@
 <body>
   <div class="col-sm-offset-1 col-sm-10">
     <h1>
-      Welcome!
+      Final Project Alexis & Victor!
     </h1>
     <hr>
     <p class="lead"><b>Available use-cases are:</b></p>
