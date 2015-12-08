@@ -10,21 +10,22 @@ import project.entity.Service;
 
 @Component
 public class Populator implements ApplicationListener<ContextRefreshedEvent> {
-  @Autowired
-  ServiceDao serviceDao;
+	@Autowired
+	ServiceDao serviceDao;
+	PosteDao posteDao;
 
-  boolean done = false;
+	boolean done = false;
 
-  @Override
-  @Transactional
-  public void onApplicationEvent(ContextRefreshedEvent event) {
-    if (!done) {
+	@Override
+	@Transactional
+	public void onApplicationEvent(ContextRefreshedEvent event) {
+		if (!done) {
 
-      serviceDao.save(new Service("Ressources humaines"));
-      serviceDao.save(new Service("Service commercial"));
-      serviceDao.save(new Service("Direction"));
-
-      done = true;
-    }
-  }
+			serviceDao.save(new Service("Ressources humaines"));
+			serviceDao.save(new Service("Service commercial"));
+			serviceDao.save(new Service("Direction"));
+			// posteDao.save(new Poste("Test", serviceDao.getOne(2)));
+			done = true;
+		}
+	}
 }

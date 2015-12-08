@@ -3,26 +3,32 @@
 
 <html>
 <head>
-  <title>Stapp</title>
+  <title>Salarié</title>
   <link rel="stylesheet"
         type="text/css"
         href="<c:url value='/resources/bootstrap.min.css' />">
 </head>
 <body>
   <div class="col-sm-offset-1 col-sm-10">
-    <h2>Create a student</h2>
+    <h2>Créer un salarié</h2>
 
     <form class="form-horizontal" method="POST">
       <div class="form-group">
-        <label for="student_name" class="col-sm-2 control-label">Name</label>
+        <label for="salarie_nom" class="col-sm-2 control-label">Nom</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="student_name" name="name" />
+          <input type="text" class="form-control" id="salarie_nom" name="nom" />
         </div>
       </div>
       <div class="form-group">
-        <label for="student_registration_nb" class="col-sm-2 control-label">Registration nb</label>
+        <label for="salarie_prenom" class="col-sm-2 control-label">Prénom</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="student_registration_nb" name="registrationNb" />
+          <input type="text" class="form-control" id="salarie_prenom" name="prenom" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="salarie_poste" class="col-sm-2 control-label">Poste</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="salarie_poste" name="poste" />
         </div>
       </div>
       <div class="form-group">

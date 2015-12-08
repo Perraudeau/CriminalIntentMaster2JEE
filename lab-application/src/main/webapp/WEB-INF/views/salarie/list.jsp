@@ -10,23 +10,25 @@
 </head>
 <body>
   <div class="col-sm-offset-1 col-sm-10">
-    <h1>Student list</h1>
+    <h1>salarie list</h1>
 
     <div>
       <table id="dataTable" class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>RegistrationNb</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Poste</th>
           </tr>
         <thead>
         <tbody>
-          <c:forEach var="student" items="${students}">
+          <c:forEach var="salarie" items="${salaries}">
             <tr>
-              <td>${student.id}</td>
-              <td>${student.name}</td>
-              <td>${student.registrationNb}</td>
+              <td>${salarie.id}</td>
+              <td>${salarie.nom}</td>
+              <td>${salarie.prenom}</td>
+              <td>${salarie.poste}</td>
             <tr>
           </c:forEach>
         </tbody>
