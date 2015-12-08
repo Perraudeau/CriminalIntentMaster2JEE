@@ -17,8 +17,9 @@ public class Salarie {
   private String nom;
   @Basic
   private String prenom;
+
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(unique = true)
+  @JoinColumn(referencedColumnName = "idPoste")
   private Poste poste;
 
   public Salarie() {

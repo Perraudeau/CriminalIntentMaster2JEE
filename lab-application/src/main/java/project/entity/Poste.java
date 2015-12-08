@@ -15,8 +15,9 @@ public class Poste {
   private Long idPoste;
   @Basic
   private String libelle;
+
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(unique = true)
+  @JoinColumn(referencedColumnName = "idService")
   private Service service;
 
   public Poste() {

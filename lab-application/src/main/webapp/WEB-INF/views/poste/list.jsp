@@ -4,7 +4,7 @@
 
 <html>
 <head>
-  <title>Stapp</title>
+  <title>Liste des postes</title>
   <link rel="stylesheet"
         type="text/css"
         href="<c:url value='/resources/bootstrap.min.css' />">

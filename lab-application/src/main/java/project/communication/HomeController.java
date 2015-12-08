@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class HomeController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String allUseCases(Map<String, Object> model) {
-		List<String> uc = new ArrayList<>();
-		uc.add("List all criminal intents (GET '/intent')");
-		uc.add("Create a criminal intent (GET '/intent/create?new' && POST '/salaries/create')");
+  @RequestMapping(method = RequestMethod.GET)
+  public String allUseCases(Map<String, Object> model) {
+    List<String> uc = new ArrayList<>();
+    uc.add("List all criminal intents (GET '/intent')");
+    uc.add("Create a criminal intent (GET '/intent/create?new' && POST '/salaries/create')");
 
-		model.put("useCases", uc);
+    model.put("useCases", uc);
 
-		return "home";
-	}
+    return "home";
+  }
 }

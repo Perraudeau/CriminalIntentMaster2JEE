@@ -10,39 +10,51 @@ import org.springframework.transaction.annotation.Transactional;
 import project.entity.Poste;
 import project.entity.Service;
 import project.service.data.PosteDao;
+import project.service.data.ServiceDao;
 
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class PosteService {
-	private final PosteDao dao;
+  private final PosteDao daoP;
+  private final ServiceDao daoS;
 
-	@Autowired
-	public PosteService(PosteDao dao) {
-		this.dao = dao;
-	}
+  @Autowired
+  public PosteService(PosteDao daoP, ServiceDao daoS) {
+    this.daoP = daoP;
+    this.daoS = daoS;
+  }
 
-	public Poste findStudent(Long id) {
-		Poste poste = dao.getOne(id);
-		return poste;
-	}
+  public Poste findStudent(Long id) {
+    Poste poste = daoP.getOne(id);
+    return poste;
+  }
 
-	public Poste findStudentByName(String nom) {
-		Poste poste = dao.findByName(nom);
-		return poste;
-	}
+  public Poste findStudentByName(String nom) {
+    Poste poste = daoP.findByName(nom);
+    return poste;
+  }
 
-	public List<Poste> findPostes() {
-		List<Poste> postes = dao.findAll();
-		return postes;
-	}
+  public List<Poste> findPostes() {
+    List<Poste> postes = daoP.findAll();
+    return postes;
+  }
 
-	public void createPoste(String libelle, Service service) {
+  public void createPoste(String libelle, Service service) {
+    Poste p = null;
 
-		Poste emp = new Poste();
-		emp.setLibelle(libelle);
-		emp.setService(service);
-
-		dao.save(emp);
-	}
+    // This part avoid to recreate clone of postes
+    if (daoP.findByName(libelle) != null) {
+      p = daoP.findByName(libelle);
+    } else {
+      // This part avoid to recreate clone of services
+      Service previousService = daoS.findByName(service.getLibelle());
+      if (previousService != null) {
+        p = new Poste(libelle, previousService);
+      } else {
+        p = new Poste(libelle, service);
+      }
+    }
+    daoP.save(p);
+  }
 
 }

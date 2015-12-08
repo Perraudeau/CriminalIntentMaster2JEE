@@ -14,36 +14,36 @@ import project.service.data.SalarieDao;
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class SalarieService {
-	private final SalarieDao dao;
+  private final SalarieDao dao;
 
-	@Autowired
-	public SalarieService(SalarieDao dao) {
-		this.dao = dao;
-	}
+  @Autowired
+  public SalarieService(SalarieDao dao) {
+    this.dao = dao;
+  }
 
-	public Salarie findStudent(Long id) {
-		Salarie salarie = dao.getOne(id);
-		return salarie;
-	}
+  public Salarie findStudent(Long id) {
+    Salarie salarie = dao.getOne(id);
+    return salarie;
+  }
 
-	public Salarie findStudentByName(String nom) {
-		Salarie salarie = dao.findByName(nom);
-		return salarie;
-	}
+  public Salarie findStudentByName(String nom) {
+    Salarie salarie = dao.findByName(nom);
+    return salarie;
+  }
 
-	public List<Salarie> findSalaries() {
-		List<Salarie> salaries = dao.findAll();
-		return salaries;
-	}
+  public List<Salarie> findSalaries() {
+    List<Salarie> salaries = dao.findAll();
+    return salaries;
+  }
 
-	public void createSalarie(String nom, String prenom, Poste poste) {
+  public void createSalarie(String nom, String prenom, Poste poste) {
 
-		Salarie emp = new Salarie();
-		emp.setNom(nom);
-		emp.setPrenom(prenom);
-		emp.setPoste(poste);
+    Salarie s = new Salarie();
+    s.setNom(nom);
+    s.setPrenom(prenom);
+    s.setPoste(poste);
 
-		dao.save(emp);
-	}
+    dao.save(s);
+  }
 
 }

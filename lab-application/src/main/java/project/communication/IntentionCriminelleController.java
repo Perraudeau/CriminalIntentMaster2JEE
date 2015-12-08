@@ -14,28 +14,28 @@ import project.service.business.IntentionCriminelleService;
 @Controller
 @RequestMapping("/intentionCriminelles")
 public class IntentionCriminelleController {
-	private final IntentionCriminelleService service;
+  private final IntentionCriminelleService service;
 
-	@Autowired
-	public IntentionCriminelleController(IntentionCriminelleService service) {
-		this.service = service;
-	}
+  @Autowired
+  public IntentionCriminelleController(IntentionCriminelleService service) {
+    this.service = service;
+  }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String findIntentionCriminelles(Map<String, Object> model) {
-		List<IntentionCriminelle> intentionCriminelles = service.findIntentionCriminelles();
-		model.put("intentionCriminelles", intentionCriminelles);
-		return "intentionCriminelle/list";
-	}
+  @RequestMapping(method = RequestMethod.GET)
+  public String findIntentionCriminelles(Map<String, Object> model) {
+    List<IntentionCriminelle> intentionCriminelles = service.findIntentionCriminelles();
+    model.put("intentionCriminelles", intentionCriminelles);
+    return "intentionCriminelle/list";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-	public String showStudentForm() {
-		return "intentionCriminelle/edit";
-	}
+  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+  public String showStudentForm() {
+    return "intentionCriminelle/edit";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createIntentionCriminelle(IntentionCriminelle intentionCriminelle) {
-		service.createIntentionCriminelle(intentionCriminelle.getLibelle(), intentionCriminelle.getSalarie());
-		return "redirect:/intentionCriminelles";
-	}
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public String createIntentionCriminelle(IntentionCriminelle ic) {
+    service.createIntentionCriminelle(ic.getLibelle(), ic.getSalarie());
+    return "redirect:/intentionCriminelles";
+  }
 }

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-  <title>Stapp</title>
+  <title>Liste des intentions criminelles</title>
   <link rel="stylesheet"
         type="text/css"
         href="<c:url value='/resources/bootstrap.min.css' />">
@@ -20,7 +20,6 @@
             <th>Id</th>
             <th>Libellé</th>
             <th>Salarié</th>
-           
           </tr>
         <thead>
         <tbody>
@@ -29,7 +28,6 @@
               <td>${intentionCriminelle.idIntentionCriminelle}</td>
               <td>${intentionCriminelle.libelle}</td>
               <td>${intentionCriminelle.salarie.getNom()} ${intentionCriminelle.salarie.getPrenom()}</td>
-
             <tr>
           </c:forEach>
         </tbody>

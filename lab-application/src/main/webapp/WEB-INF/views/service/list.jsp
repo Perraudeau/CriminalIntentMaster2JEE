@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page session="false" %>
 
 <html>
 <head>
-  <title>Stapp</title>
+  <title>Liste des services</title>
   <link rel="stylesheet"
         type="text/css"
         href="<c:url value='/resources/bootstrap.min.css' />">
@@ -17,7 +18,7 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Libellé</th>
+            <th>LibellÃ©</th>
         
           </tr>
         <thead>
@@ -26,7 +27,6 @@
             <tr>
               <td>${service.idService}</td>
               <td>${service.libelle}</td>
-              
             <tr>
           </c:forEach>
         </tbody>

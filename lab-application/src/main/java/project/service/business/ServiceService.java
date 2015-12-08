@@ -13,34 +13,38 @@ import project.service.data.ServiceDao;
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class ServiceService {
-	private final ServiceDao dao;
+  private final ServiceDao dao;
 
-	@Autowired
-	public ServiceService(ServiceDao dao) {
-		this.dao = dao;
-	}
+  @Autowired
+  public ServiceService(ServiceDao dao) {
+    this.dao = dao;
+  }
 
-	public Service findService(Long id) {
-		Service service = dao.getOne(id);
-		return service;
-	}
+  public Service findService(Long id) {
+    Service service = dao.getOne(id);
+    return service;
+  }
 
-	public Service findServiceByLibelle(String libelle) {
-		Service service = dao.findByName(libelle);
-		return service;
-	}
+  public Service findServiceByLibelle(String libelle) {
+    Service service = dao.findByName(libelle);
+    return service;
+  }
 
-	public List<Service> findService() {
-		List<Service> services = dao.findAll();
-		return services;
-	}
+  public List<Service> findService() {
+    List<Service> services = dao.findAll();
+    return services;
+  }
 
-	public void createService(String libelle) {
+  public void createService(String libelle) {
+    Service s = null;
 
-		Service emp = new Service();
-		emp.setLibelle(libelle);
-
-		dao.save(emp);
-	}
+    // This part avoid to recreate clone of services
+    if (dao.findByName(libelle) != null) {
+      s = dao.findByName(libelle);
+    } else {
+      s = new Service(libelle);
+    }
+    dao.save(s);
+  }
 
 }

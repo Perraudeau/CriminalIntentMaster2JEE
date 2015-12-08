@@ -4,37 +4,30 @@
 
 <html>
 <head>
-  <title>Salarié</title>
+  <title>Intention criminelle</title>
   <link rel="stylesheet"
         type="text/css"
         href="<c:url value='/resources/bootstrap.min.css' />">
 </head>
 <body>
   <div class="col-sm-offset-1 col-sm-10">
-    <h2>Créer un salarié</h2>
-
+    <h2>Créer une intention criminelle</h2>
     <form class="form-horizontal" method="POST">
       <div class="form-group">
-        <label for="salarie_nom" class="col-sm-2 control-label">Nom</label>
+        <label for="intentionCriminelle_libelle" class="col-sm-2 control-label">Libellé</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="salarie_nom" name="nom" />
+          <input type="text" class="form-control" id="intentionCriminelle_libelle" name="libelle" />
         </div>
       </div>
       <div class="form-group">
-        <label for="salarie_prenom" class="col-sm-2 control-label">Prénom</label>
+        <label for="intentionCriminelle_salarie" class="col-sm-2 control-label">Suspect</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="salarie_prenom" name="prenom" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="salarie_poste" class="col-sm-2 control-label">Poste</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="salarie_poste" name="poste" />
+          <input type="text" class="form-control" id="intentionCriminelle_salarie" name="salarie" />
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default">Envoyer</button>
         </div>
       </div>
     </form>
