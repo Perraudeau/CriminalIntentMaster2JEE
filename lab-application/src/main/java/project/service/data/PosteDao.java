@@ -1,5 +1,5 @@
 package project.service.data;
 
-public class SalarieDao {
+public class PosteDao {
 
 }
