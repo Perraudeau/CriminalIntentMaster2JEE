@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page session="false" %>
 
 <html>
@@ -20,5 +21,33 @@
         <li><p class="lead">${uc}</p></li>
       </c:forEach>
     </ul>
+    
+    <a href="/services">
+   		<button>Liste des services</button>
+	</a>
+ <a href="/postes">
+   <button>Liste des postes</button>
+</a>
+ <a href="/salaries">
+   <button>Liste des salariés</button>
+</a>
+ <a href="/intentionCriminelles">
+   <button>Liste des intentions criminelles</button>
+</a>
+
+    <a href="/services/create?new">
+   		<button>Ajout d'un service</button>
+	</a>
+ <a href="/postes/create?new">
+   <button>Ajout d'un poste</button>
+</a>
+ <a href="/salaries/create?new">
+   <button>Ajout d'un salarié</button>
+</a>
+ <a href="/intentionCriminelles/create?new">
+   <button>Ajout d'une intention criminelle</button>
+</a>
+
+
   </div>
 </body>
