@@ -17,50 +17,51 @@ import project.entity.Service;
 @Transactional(propagation = Propagation.MANDATORY)
 public class PosteDao {
 
-	@PersistenceContext
-	private EntityManager em;
+  @PersistenceContext
+  private EntityManager em;
 
-	/*
-	 * Return a service from a list of one service. This method is needed for
-	 * findByNumber and findByName
-	 */
-	private Poste getSingle(List<Poste> postes) {
-		if (postes.isEmpty()) {
-			return null;
-		}
-		if (postes.size() > 1) {
-			throw new IllegalStateException("Error : several services with same name");
-		}
-		return postes.get(0);
-	}
+  /*
+   * Return a service from a list of one service. This method is needed for
+   * findByNumber and findByName
+   */
+  private Poste getSingle(List<Poste> postes) {
+    if (postes.isEmpty()) {
+      return null;
+    }
+    if (postes.size() > 1) {
+      throw new IllegalStateException("Error : several postes with same name");
+    }
+    return postes.get(0);
+  }
 
-	// Return a service by its Id.
-	public Poste getOne(Long id) {
-		return em.find(Poste.class, id);
-	}
+  // Return a service by its Id.
+  public Poste getOne(Long id) {
+    return em.find(Poste.class, id);
+  }
 
-	// Return a list of all services
-	public List<Poste> findAll() {
-		return em.createQuery("from Poste s").getResultList();
-	}
+  // Return a list of all services
+  public List<Poste> findAll() {
+    return em.createQuery("from Poste p").getResultList();
+  }
 
-	// Return a service from its name
-	public Poste findByName(String libelle) {
-		Query query = em.createQuery("from Poste s where s.libelle = :libelle");
-		query.setParameter("libelle", libelle);
-		List<Poste> postes = query.getResultList();
-		return getSingle(postes);
-	}
+  // Return a poste from its name
+  public Poste findByName(String libelle) {
+    Query query = em.createQuery("from Poste p where p.libelle = :libelle");
+    query.setParameter("libelle", libelle);
+    List<Poste> postes = query.getResultList();
+    return getSingle(postes);
+  }
 
-	public Poste findByService(Service service) {
-		Query query = em.createQuery("from Poste s where s.service = :service");
-		query.setParameter("service", service);
-		List<Poste> postes = query.getResultList();
-		return getSingle(postes);
-	}
+  // Return a poste by its service
+  public Poste findByService(Service service) {
+    Query query = em.createQuery("from Poste p where p.service = :service");
+    query.setParameter("service", service);
+    List<Poste> postes = query.getResultList();
+    return getSingle(postes);
+  }
 
-	// save the service in the DB
-	public void save(Poste stu) {
-		em.persist(stu);
-	}
+  // save the poste in the DB
+  public void save(Poste p) {
+    em.persist(p);
+  }
 }

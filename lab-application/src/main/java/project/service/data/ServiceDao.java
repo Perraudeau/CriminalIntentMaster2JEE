@@ -52,7 +52,7 @@ public class ServiceDao {
   }
 
   // save the service in the DB
-  public void save(Service stu) {
-    em.persist(stu);
+  public void save(Service ser) {
+    em.persist(ser);
   }
 }
