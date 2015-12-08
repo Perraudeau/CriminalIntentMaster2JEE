@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="col-sm-offset-1 col-sm-10">
-    <h1>salarie list</h1>
+    <h1>Liste des salariés</h1>
 
     <div>
       <table id="dataTable" class="table table-striped table-bordered">
