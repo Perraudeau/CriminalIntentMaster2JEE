@@ -10,25 +10,23 @@
 </head>
 <body>
   <div class="col-sm-offset-1 col-sm-10">
-    <h1>Liste des salariés</h1>
+    <h1>Liste des services</h1>
 
     <div>
       <table id="dataTable" class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Poste</th>
+            <th>Libellé</th>
+        
           </tr>
         <thead>
         <tbody>
-          <c:forEach var="salarie" items="${salaries}">
+          <c:forEach var="service" items="${services}">
             <tr>
-              <td>${salarie.idSalarie}</td>
-              <td>${salarie.nom}</td>
-              <td>${salarie.prenom}</td>
-              <td>${salarie.poste}</td>
+              <td>${service.idService}</td>
+              <td>${service.libelle}</td>
+              
             <tr>
           </c:forEach>
         </tbody>
