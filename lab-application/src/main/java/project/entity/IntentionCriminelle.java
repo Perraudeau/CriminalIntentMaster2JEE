@@ -17,7 +17,7 @@ public class IntentionCriminelle {
   private String libelle;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(unique = true)
+  @JoinColumn(referencedColumnName = "idSalarie")
   private Salarie salarie;
 
   public IntentionCriminelle() {

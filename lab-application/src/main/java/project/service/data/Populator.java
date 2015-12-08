@@ -42,9 +42,8 @@ public class Populator implements ApplicationListener<ContextRefreshedEvent> {
       salarieDao.save(new Salarie("BOMBEUR", "Jean", posteDao.findByName("Responsable RH")));
 
       intentionCriminelleDao.save(new IntentionCriminelle("Laisse trainer son caca", salarieDao.findByName("LEROUX")));
-      intentionCriminelleDao
-          .save(new IntentionCriminelle("Mange la bouche ouverte", salarieDao.findByName("PERRAUDEAU")));
-      intentionCriminelleDao.save(new IntentionCriminelle("Fait caca sur les murs", salarieDao.findByName("BOMBEUR")));
+      intentionCriminelleDao.save(new IntentionCriminelle("Mange la bouche ouverte", salarieDao.findByName("LEROUX")));
+      intentionCriminelleDao.save(new IntentionCriminelle("Fait caca sur les murs", salarieDao.findByName("LEROUX")));
 
       done = true;
     }
