@@ -8,17 +8,19 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.entity.IntentionCriminelle;
-import project.entity.Salarie;
 import project.service.data.IntentionCriminelleDao;
+import project.service.data.SalarieDao;
 
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class IntentionCriminelleService {
   private final IntentionCriminelleDao dao;
+  private final SalarieDao daoS;
 
   @Autowired
-  public IntentionCriminelleService(IntentionCriminelleDao dao) {
+  public IntentionCriminelleService(IntentionCriminelleDao dao, SalarieDao daoS) {
     this.dao = dao;
+    this.daoS = daoS;
   }
 
   public IntentionCriminelle findStudent(Long id) {
@@ -36,11 +38,11 @@ public class IntentionCriminelleService {
     return ics;
   }
 
-  public void createIntentionCriminelle(String libelle, Salarie salarie) {
+  public void createIntentionCriminelle(String libelle, String salarie) {
 
     IntentionCriminelle ic = new IntentionCriminelle();
     ic.setLibelle(libelle);
-    ic.setSalarie(salarie);
+    ic.setSalarie(daoS.findByName(salarie));
 
     dao.save(ic);
   }

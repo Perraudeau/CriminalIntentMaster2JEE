@@ -15,7 +15,8 @@
       Final Project Alexis & Victor!
     </h1>  
 	 <ul>
-     <li> Faire les Edits de chaque entity </li>
+     <li> Faire les Edits de chaque entity --OK</li>
+     <li> Ranger et verifier les fichiers POM.xml</li>
      <li> Régler le problème d'utf8 (si possible)</li>
      <li> Faire des règles métiers pour éviter de créer plusieurs services(postes ....) ou null</li>
      <li> Faire un lien de retour sur le menu  sur chaque page</li>

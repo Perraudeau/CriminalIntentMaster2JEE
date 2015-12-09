@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.entity.Poste;
-import project.entity.Service;
 import project.service.data.PosteDao;
 import project.service.data.ServiceDao;
 
@@ -39,21 +38,11 @@ public class PosteService {
     return postes;
   }
 
-  public void createPoste(String libelle, Service service) {
-    Poste p = null;
+  public void createPoste(String libelle, String service) {
+    Poste p = new Poste();
+    p.setLibelle(libelle);
+    p.setService(daoS.findByName(service));
 
-    // This part avoid to recreate clone of postes
-    if (daoP.findByName(libelle) != null) {
-      p = daoP.findByName(libelle);
-    } else {
-      // This part avoid to recreate clone of services
-      Service previousService = daoS.findByName(service.getLibelle());
-      if (previousService != null) {
-        p = new Poste(libelle, previousService);
-      } else {
-        p = new Poste(libelle, service);
-      }
-    }
     daoP.save(p);
   }
 

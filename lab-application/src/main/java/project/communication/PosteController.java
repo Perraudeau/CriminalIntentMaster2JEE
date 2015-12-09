@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import project.entity.Poste;
 import project.service.business.PosteService;
@@ -34,8 +35,8 @@ public class PosteController {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public String createPoste(Poste poste) {
-    service.createPoste(poste.getLibelle(), poste.getService());
+  public String createPoste(@RequestParam Map<String, String> champs) {
+    service.createPoste(champs.get("libelle"), champs.get("service"));
     return "redirect:/postes";
   }
 }

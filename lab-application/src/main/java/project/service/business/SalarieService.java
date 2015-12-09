@@ -7,18 +7,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import project.entity.Poste;
 import project.entity.Salarie;
+import project.service.data.PosteDao;
 import project.service.data.SalarieDao;
 
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class SalarieService {
   private final SalarieDao dao;
+  private final PosteDao daoP;
 
   @Autowired
-  public SalarieService(SalarieDao dao) {
+  public SalarieService(SalarieDao dao, PosteDao daoP) {
     this.dao = dao;
+    this.daoP = daoP;
   }
 
   public Salarie findStudent(Long id) {
@@ -36,12 +38,12 @@ public class SalarieService {
     return salaries;
   }
 
-  public void createSalarie(String nom, String prenom, Poste poste) {
+  public void createSalarie(String nom, String prenom, String poste) {
 
     Salarie s = new Salarie();
     s.setNom(nom);
     s.setPrenom(prenom);
-    s.setPoste(poste);
+    s.setPoste(daoP.findByName(poste));
 
     dao.save(s);
   }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import project.entity.IntentionCriminelle;
 import project.service.business.IntentionCriminelleService;
@@ -34,8 +35,8 @@ public class IntentionCriminelleController {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public String createIntentionCriminelle(IntentionCriminelle ic) {
-    service.createIntentionCriminelle(ic.getLibelle(), ic.getSalarie());
+  public String createIntentionCriminelle(@RequestParam Map<String, String> champs) {
+    service.createIntentionCriminelle(champs.get("libelle"), champs.get("salarie"));
     return "redirect:/intentionCriminelles";
   }
 }

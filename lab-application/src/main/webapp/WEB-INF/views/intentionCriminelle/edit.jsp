@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="intentionCriminelle_salarie" class="col-sm-2 control-label">Suspect</label>
+        <label for="intentionCriminelle_salarie" class="col-sm-2 control-label">Nom du suspect</label>
         <div class="col-sm-4">
           <input type="text" class="form-control" id="intentionCriminelle_salarie" name="salarie" />
         </div>
