@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import project.entity.Poste;
 import project.entity.Salarie;
 import project.service.business.SalarieService;
 
@@ -30,7 +31,9 @@ public class SalarieController {
   }
 
   @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-  public String showStudentForm() {
+  public String showStudentForm(Map<String, Object> model) {
+    List<Poste> postes = service.findPostes();
+    model.put("postes", postes);
     return "salarie/edit";
   }
 

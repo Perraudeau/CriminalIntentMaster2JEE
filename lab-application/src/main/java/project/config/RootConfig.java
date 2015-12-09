@@ -46,6 +46,8 @@ public class RootConfig {
     Properties properties = new Properties();
     properties.setProperty("hibernate.hbm2ddl.auto", "create");
     properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+    properties.setProperty("hibernate.connection.useUnicode", "true");
+    properties.setProperty("hibernate.connection.characterEncoding", "utf-8");
 
     em.setJpaProperties(properties);
     return em;

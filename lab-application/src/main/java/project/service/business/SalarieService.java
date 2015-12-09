@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.entity.Poste;
 import project.entity.Salarie;
 import project.service.data.PosteDao;
 import project.service.data.SalarieDao;
@@ -36,6 +37,11 @@ public class SalarieService {
   public List<Salarie> findSalaries() {
     List<Salarie> salaries = dao.findAll();
     return salaries;
+  }
+
+  public List<Poste> findPostes() {
+    List<Poste> postes = daoP.findAll();
+    return postes;
   }
 
   public void createSalarie(String nom, String prenom, String poste) {

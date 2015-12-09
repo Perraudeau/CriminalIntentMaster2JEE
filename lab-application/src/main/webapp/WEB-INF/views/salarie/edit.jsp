@@ -38,5 +38,10 @@
 				</div>
 			</div>
 		</form>
+		<c:forEach var="poste" items="${postes}">
+            <tr>
+              <td>${poste.libelle}</td>
+            <tr>
+          </c:forEach>
 	</div>
 </body>
