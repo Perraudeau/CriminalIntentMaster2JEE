@@ -16,30 +16,31 @@ import project.service.business.SalarieService;
 @Controller
 @RequestMapping("/salaries")
 public class SalarieController {
-  private final SalarieService service;
+	private final SalarieService service;
 
-  @Autowired
-  public SalarieController(SalarieService service) {
-    this.service = service;
-  }
+	@Autowired
+	public SalarieController(SalarieService service) {
+		this.service = service;
+	}
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String findSalaries(Map<String, Object> model) {
-    List<Salarie> salaries = service.findSalaries();
-    model.put("salaries", salaries);
-    return "salarie/list";
-  }
+	@RequestMapping(method = RequestMethod.GET)
+	public String findSalaries(Map<String, Object> model) {
+		List<Salarie> salaries = service.findSalaries();
+		model.put("salaries", salaries);
+		return "salarie/list";
+	}
 
-  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-  public String showStudentForm(Map<String, Object> model) {
-    List<Poste> postes = service.findPostes();
-    model.put("postes", postes);
-    return "salarie/edit";
-  }
+	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+	public String showStudentForm(Map<String, Object> model) {
+		List<Poste> postes = service.findPostes();
+		model.put("postes", postes);
+		return "salarie/edit";
+	}
 
-  @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public String createSalarie(@RequestParam Map<String, String> champs) {
-    service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
-    return "redirect:/salaries";
-  }
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String createSalarie(@RequestParam Map<String, String> champs) {
+		System.out.println(champs.get("poste"));
+		service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
+		return "redirect:/salaries";
+	}
 }
