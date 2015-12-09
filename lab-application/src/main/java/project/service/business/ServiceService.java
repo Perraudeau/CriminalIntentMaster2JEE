@@ -44,7 +44,9 @@ public class ServiceService {
     } else {
       s = new Service(libelle);
     }
-    dao.save(s);
+    if (!libelle.isEmpty()) {
+      dao.save(s);
+    }
   }
 
 }
