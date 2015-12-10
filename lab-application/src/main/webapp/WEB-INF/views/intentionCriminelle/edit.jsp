@@ -31,5 +31,8 @@
         </div>
       </div>
     </form>
+    <a href="/">
+   		<button>Retour à l'accueil</button>
+	</a>
   </div>
 </body>

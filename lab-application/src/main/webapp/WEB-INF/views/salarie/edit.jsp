@@ -28,9 +28,11 @@
 			<div class="form-group">
 				<label for="salarie_poste" class="col-sm-2 control-label">Poste</label>
 				 <select name = "poste">
+				 <div class="col-sm-4">
 					<c:forEach var="poste" items="${postes}">
-          			<option id="salarie_poste" value="'${poste.libelle}'">${poste.libelle}</option>
+          			<option id="salarie_poste" value='${poste.libelle}'>${poste.libelle}</option>
           			</c:forEach>
+          			</div>
           </select>
 				<!-- <div class="col-sm-4">
 					<input type="text" class="form-control" id="salarie_poste"
@@ -43,6 +45,8 @@
 				</div>
 			</div>
 		</form>
-		
+<a href="/">
+   		<button>Retour à l'accueil</button>
+	</a>
 	</div>
 </body>

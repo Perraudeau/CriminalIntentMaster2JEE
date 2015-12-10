@@ -35,5 +35,8 @@
         </tbody>
       </table>
     </div>
+    <a href="/">
+   		<button>Retour à l'accueil</button>
+	</a>
   </div>
 </body>

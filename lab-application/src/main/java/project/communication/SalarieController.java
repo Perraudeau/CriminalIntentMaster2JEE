@@ -39,7 +39,8 @@ public class SalarieController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createSalarie(@RequestParam Map<String, String> champs) {
-		System.out.println(champs.get("poste"));
+		System.out.println("controller :" + champs.get("prenom"));
+		System.out.println("controller :" + champs.get("poste"));
 		service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
 		return "redirect:/salaries";
 	}
