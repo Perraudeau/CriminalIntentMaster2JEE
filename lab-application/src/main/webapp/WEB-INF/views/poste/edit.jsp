@@ -21,11 +21,14 @@
 			</div>
 			<div class="form-group">
 				<label for="poste_service" class="col-sm-2 control-label">Service</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="poste_service"
-						name="service" />
-				</div>
-			</div>
+				 <select name = "service">
+				 <div class="col-sm-4">
+					<c:forEach var="service" items="${services}">
+          			<option id="poste_service" value='${service.libelle}'>${service.libelle}</option>
+          			</c:forEach>
+          			</div>
+          </select>
+		
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">Envoyer</button>

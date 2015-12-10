@@ -41,7 +41,7 @@ public class SalarieService {
 
 	public List<Poste> findPostes() {
 		List<Poste> postes = daoP.findAll();
-
+		System.out.println(postes);
 		return postes;
 	}
 

@@ -31,7 +31,7 @@ public class SalarieController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-	public String showStudentForm(Map<String, Object> model) {
+	public String showSalarieForm(Map<String, Object> model) {
 		List<Poste> postes = service.findPostes();
 		model.put("postes", postes);
 		return "salarie/edit";
@@ -39,8 +39,6 @@ public class SalarieController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createSalarie(@RequestParam Map<String, String> champs) {
-		System.out.println("controller :" + champs.get("prenom"));
-		System.out.println("controller :" + champs.get("poste"));
 		service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
 		return "redirect:/salaries";
 	}
