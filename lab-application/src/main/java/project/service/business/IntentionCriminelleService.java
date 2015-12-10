@@ -8,43 +8,48 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.entity.IntentionCriminelle;
+import project.entity.Salarie;
 import project.service.data.IntentionCriminelleDao;
 import project.service.data.SalarieDao;
 
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class IntentionCriminelleService {
-  private final IntentionCriminelleDao dao;
-  private final SalarieDao daoS;
+	private final IntentionCriminelleDao dao;
+	private final SalarieDao daoS;
 
-  @Autowired
-  public IntentionCriminelleService(IntentionCriminelleDao dao, SalarieDao daoS) {
-    this.dao = dao;
-    this.daoS = daoS;
-  }
+	@Autowired
+	public IntentionCriminelleService(IntentionCriminelleDao dao, SalarieDao daoS) {
+		this.dao = dao;
+		this.daoS = daoS;
+	}
 
-  public IntentionCriminelle findStudent(Long id) {
-    IntentionCriminelle poste = dao.getOne(id);
-    return poste;
-  }
+	public IntentionCriminelle findIntentionCriminelle(Long id) {
+		IntentionCriminelle poste = dao.getOne(id);
+		return poste;
+	}
 
-  public IntentionCriminelle findIntentionCriminelleByLibelle(String libelle) {
-    IntentionCriminelle ic = dao.findByLibelle(libelle);
-    return ic;
-  }
+	public IntentionCriminelle findIntentionCriminelleByLibelle(String libelle) {
+		IntentionCriminelle ic = dao.findByLibelle(libelle);
+		return ic;
+	}
 
-  public List<IntentionCriminelle> findIntentionCriminelles() {
-    List<IntentionCriminelle> ics = dao.findAll();
-    return ics;
-  }
+	public List<IntentionCriminelle> findIntentionCriminelles() {
+		List<IntentionCriminelle> ics = dao.findAll();
+		return ics;
+	}
 
-  public void createIntentionCriminelle(String libelle, String salarie) {
+	public List<Salarie> findSalaries() {
+		List<Salarie> salaries = daoS.findAll();
+		return salaries;
+	}
 
-    IntentionCriminelle ic = new IntentionCriminelle();
-    ic.setLibelle(libelle);
-    ic.setSalarie(daoS.findByName(salarie));
+	public void createIntentionCriminelle(String libelle, String salarie) {
+		IntentionCriminelle ic = new IntentionCriminelle();
+		ic.setLibelle(libelle);
+		ic.setSalarie(daoS.findByName(salarie));
 
-    dao.save(ic);
-  }
+		dao.save(ic);
+	}
 
 }

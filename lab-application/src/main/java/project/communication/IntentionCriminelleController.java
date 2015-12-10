@@ -10,33 +10,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import project.entity.IntentionCriminelle;
+import project.entity.Salarie;
 import project.service.business.IntentionCriminelleService;
 
 @Controller
 @RequestMapping("/intentionCriminelles")
 public class IntentionCriminelleController {
-  private final IntentionCriminelleService service;
+	private final IntentionCriminelleService service;
 
-  @Autowired
-  public IntentionCriminelleController(IntentionCriminelleService service) {
-    this.service = service;
-  }
+	@Autowired
+	public IntentionCriminelleController(IntentionCriminelleService service) {
+		this.service = service;
+	}
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String findIntentionCriminelles(Map<String, Object> model) {
-    List<IntentionCriminelle> intentionCriminelles = service.findIntentionCriminelles();
-    model.put("intentionCriminelles", intentionCriminelles);
-    return "intentionCriminelle/list";
-  }
+	@RequestMapping(method = RequestMethod.GET)
+	public String findIntentionCriminelles(Map<String, Object> model) {
+		List<IntentionCriminelle> intentionCriminelles = service.findIntentionCriminelles();
+		model.put("intentionCriminelles", intentionCriminelles);
+		return "intentionCriminelle/list";
+	}
 
-  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-  public String showStudentForm() {
-    return "intentionCriminelle/edit";
-  }
+	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+	public String showIntentionForm(Map<String, Object> model) {
+		List<Salarie> salaries = service.findSalaries();
+		model.put("salaries", salaries);
+		return "intentionCriminelle/edit";
+	}
 
-  @RequestMapping(value = "/create", method = RequestMethod.POST)
-  public String createIntentionCriminelle(@RequestParam Map<String, String> champs) {
-    service.createIntentionCriminelle(champs.get("libelle"), champs.get("salarie"));
-    return "redirect:/intentionCriminelles";
-  }
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String createIntentionCriminelle(@RequestParam Map<String, String> champs) {
+		service.createIntentionCriminelle(champs.get("libelle"), champs.get("salarie"));
+		return "redirect:/intentionCriminelles";
+	}
 }

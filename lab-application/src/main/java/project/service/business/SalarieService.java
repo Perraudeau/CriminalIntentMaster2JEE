@@ -29,7 +29,7 @@ public class SalarieService {
 		return salarie;
 	}
 
-	public Salarie findStudentByName(String nom) {
+	public Salarie findSalarieByName(String nom) {
 		Salarie salarie = dao.findByName(nom);
 		return salarie;
 	}
@@ -41,7 +41,6 @@ public class SalarieService {
 
 	public List<Poste> findPostes() {
 		List<Poste> postes = daoP.findAll();
-		System.out.println(postes);
 		return postes;
 	}
 

@@ -19,12 +19,18 @@
           <input type="text" class="form-control" id="intentionCriminelle_libelle" name="libelle" />
         </div>
       </div>
+      
       <div class="form-group">
-        <label for="intentionCriminelle_salarie" class="col-sm-2 control-label">Nom du suspect</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="intentionCriminelle_salarie" name="salarie" />
-        </div>
-      </div>
+				<label for="intentionCriminelle_salarie" class="col-sm-2 control-label">Employé</label>
+				 <select name = "salarie">
+				 <div class="col-sm-4">
+					<c:forEach var="salarie" items="${salaries}">
+          			<option id="intentionCriminelle_salarie" value='${salarie.nom}'>${salarie.nom} ${salarie.prenom}</option>
+          			</c:forEach>
+          			</div>
+          </select>
+		</div>
+		
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Envoyer</button>

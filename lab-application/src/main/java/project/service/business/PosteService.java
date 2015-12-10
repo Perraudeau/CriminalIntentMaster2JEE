@@ -24,7 +24,7 @@ public class PosteService {
 		this.daoS = daoS;
 	}
 
-	public Poste findStudent(Long id) {
+	public Poste findPoste(Long id) {
 		Poste poste = daoP.getOne(id);
 		return poste;
 	}
@@ -41,14 +41,13 @@ public class PosteService {
 
 	public List<Service> findServices() {
 		List<Service> services = daoS.findAll();
-		System.out.println("Service : " + services);
 		return services;
 	}
 
 	public void createPoste(String libelle, String service) {
 		Poste p = new Poste();
 		p.setLibelle(libelle);
-		p.setService(daoS.findByName(service));
+		p.setService(daoS.findByLibelle(service));
 
 		daoP.save(p);
 	}
