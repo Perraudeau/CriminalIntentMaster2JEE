@@ -15,43 +15,41 @@ import project.service.data.SalarieDao;
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class SalarieService {
-	private final SalarieDao dao;
-	private final PosteDao daoP;
+  private final SalarieDao daoS;
+  private final PosteDao daoP;
 
-	@Autowired
-	public SalarieService(SalarieDao dao, PosteDao daoP) {
-		this.dao = dao;
-		this.daoP = daoP;
-	}
+  @Autowired
+  public SalarieService(SalarieDao dao, PosteDao daoP) {
+    this.daoS = dao;
+    this.daoP = daoP;
+  }
 
-	public Salarie findStudent(Long id) {
-		Salarie salarie = dao.getOne(id);
-		return salarie;
-	}
+  public Salarie findStudent(Long id) {
+    Salarie salarie = daoS.getOne(id);
+    return salarie;
+  }
 
-	public Salarie findSalarieByName(String nom) {
-		Salarie salarie = dao.findByName(nom);
-		return salarie;
-	}
+  public Salarie findSalarieByName(String nom) {
+    Salarie salarie = daoS.findByName(nom);
+    return salarie;
+  }
 
-	public List<Salarie> findSalaries() {
-		List<Salarie> salaries = dao.findAll();
-		return salaries;
-	}
+  public List<Salarie> findSalaries() {
+    List<Salarie> salaries = daoS.findAll();
+    return salaries;
+  }
 
-	public List<Poste> findPostes() {
-		List<Poste> postes = daoP.findAll();
-		return postes;
-	}
+  public List<Poste> findPostes() {
+    List<Poste> postes = daoP.findAll();
+    return postes;
+  }
 
-	public void createSalarie(String nom, String prenom, String poste) {
-
-		Salarie s = new Salarie();
-		s.setNom(nom);
-		s.setPrenom(prenom);
-		s.setPoste(daoP.findByName(poste));
-
-		dao.save(s);
-	}
-
+  public void createSalarie(String nom, String prenom, String poste) {
+    if (daoS.findByNameSurnameAndPoste(nom, prenom, daoP.findByName(poste)) == null) {
+      Salarie s = new Salarie(nom, prenom, daoP.findByName(poste));
+      if (!nom.isEmpty() && !prenom.isEmpty()) {
+        daoS.save(s);
+      }
+    }
+  }
 }

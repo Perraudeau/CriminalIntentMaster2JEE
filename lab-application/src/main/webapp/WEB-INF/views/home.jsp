@@ -15,13 +15,9 @@
       Final Project Alexis & Victor!
     </h1>  
 	 <ul>
-     <li> Faire les Edits de chaque entity --OK</li>
      <li> Ranger et verifier les fichiers POM.xml</li>
      <li> Régler le problème d'utf8 (si possible)</li>
-     <li> Faire des règles métiers pour éviter de créer plusieurs services(postes ....) ou null</li>
-     <li> Faire un lien de retour sur le menu  sur chaque page</li>
-     <li> Vérifier que l'on peut créer plusieurs postes au meme service</li>
-     <li> Plusieurs salariés peuvent appartenir au meme poste</li>
+     <li> Noter les RG faites</li>
      <li> Commenter</li>
      <li> Web design (facult)</li>
      <li> Voir la suppression (en vérifiant les cascades ... nirvana)</li>

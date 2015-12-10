@@ -55,6 +55,14 @@ public class IntentionCriminelleDao {
     return getSingle(intentionCriminelle);
   }
 
+  public Object findByLibelleAndSalarie(String libelle, Salarie salarie) {
+    Query query = em.createQuery("from IntentionCriminelle ic where ic.libelle = :libelle and ic.salarie = :salarie");
+    query.setParameter("libelle", libelle);
+    query.setParameter("salarie", salarie);
+    List<IntentionCriminelle> intentionCriminelle = query.getResultList();
+    return getSingle(intentionCriminelle);
+  }
+
   public void save(IntentionCriminelle ic) {
     em.persist(ic);
   }

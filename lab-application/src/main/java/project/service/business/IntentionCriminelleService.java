@@ -15,41 +15,41 @@ import project.service.data.SalarieDao;
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
 public class IntentionCriminelleService {
-	private final IntentionCriminelleDao dao;
-	private final SalarieDao daoS;
+  private final IntentionCriminelleDao daoIc;
+  private final SalarieDao daoS;
 
-	@Autowired
-	public IntentionCriminelleService(IntentionCriminelleDao dao, SalarieDao daoS) {
-		this.dao = dao;
-		this.daoS = daoS;
-	}
+  @Autowired
+  public IntentionCriminelleService(IntentionCriminelleDao dao, SalarieDao daoS) {
+    this.daoIc = dao;
+    this.daoS = daoS;
+  }
 
-	public IntentionCriminelle findIntentionCriminelle(Long id) {
-		IntentionCriminelle poste = dao.getOne(id);
-		return poste;
-	}
+  public IntentionCriminelle findIntentionCriminelle(Long id) {
+    IntentionCriminelle poste = daoIc.getOne(id);
+    return poste;
+  }
 
-	public IntentionCriminelle findIntentionCriminelleByLibelle(String libelle) {
-		IntentionCriminelle ic = dao.findByLibelle(libelle);
-		return ic;
-	}
+  public IntentionCriminelle findIntentionCriminelleByLibelle(String libelle) {
+    IntentionCriminelle ic = daoIc.findByLibelle(libelle);
+    return ic;
+  }
 
-	public List<IntentionCriminelle> findIntentionCriminelles() {
-		List<IntentionCriminelle> ics = dao.findAll();
-		return ics;
-	}
+  public List<IntentionCriminelle> findIntentionCriminelles() {
+    List<IntentionCriminelle> ics = daoIc.findAll();
+    return ics;
+  }
 
-	public List<Salarie> findSalaries() {
-		List<Salarie> salaries = daoS.findAll();
-		return salaries;
-	}
+  public List<Salarie> findSalaries() {
+    List<Salarie> salaries = daoS.findAll();
+    return salaries;
+  }
 
-	public void createIntentionCriminelle(String libelle, String salarie) {
-		IntentionCriminelle ic = new IntentionCriminelle();
-		ic.setLibelle(libelle);
-		ic.setSalarie(daoS.findByName(salarie));
-
-		dao.save(ic);
-	}
-
+  public void createIntentionCriminelle(String libelle, String salarie) {
+    if (daoIc.findByLibelleAndSalarie(libelle, daoS.findByName(salarie)) == null) {
+      IntentionCriminelle ic = new IntentionCriminelle(libelle, daoS.findByName(salarie));
+      if (!libelle.isEmpty()) {
+        daoIc.save(ic);
+      }
+    }
+  }
 }

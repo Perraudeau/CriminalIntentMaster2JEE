@@ -60,6 +60,15 @@ public class PosteDao {
     return getSingle(postes);
   }
 
+  // Return a poste by its service and nme
+  public Poste findByNameAndService(String libelle, Service service) {
+    Query query = em.createQuery("from Poste p where p.service = :service and p.libelle = :libelle");
+    query.setParameter("service", service);
+    query.setParameter("libelle", libelle);
+    List<Poste> postes = query.getResultList();
+    return getSingle(postes);
+  }
+
   // save the poste in the DB
   public void save(Poste p) {
     em.persist(p);
