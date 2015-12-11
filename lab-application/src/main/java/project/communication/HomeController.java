@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String allUseCases(Map<String, Object> model) {
-		List<String> uc = new ArrayList<>();
-		uc.add("Ce site à été crée par Alexis LEROUX et Victor PERRAUDEAU.");
-		uc.add("Il a pour but de recenser les intentions criminelles des salariés.");
-		uc.add("A vos claviers, prêt, taper...");
-		model.put("useCases", uc);
+	public String allRegleGestion(Map<String, Object> model) {
+		List<String> rg = new ArrayList<>();
+		rg.add("Les caractères accentué sont pris en compte.");
+		rg.add("Vous ne pouvez pas ajouter de service/poste/salarié/intention criminelle vide ou avec un espace");
+		rg.add("Vous ne pouvez pas ajouter un poste à un service inexistant");
+		rg.add("Vous ne pouvez pas ajouter un salarié à un poste inexistant");
+		rg.add("Vous ne pouvez pas ajouter une intention criminelle à un salarié inexistant");
+		model.put("regleGestion", rg);
 
 		return "home";
+
 	}
 }

@@ -5,21 +5,20 @@
       Projet final Alexis & Victor!
     </h1>  
 	 <ul>
-     <li> Noter les RG faites</li>
      <li> Commenter</li>
      </ul>
     
     <hr>
     
-    
-    <p class="lead"><b>Available use-cases are:</b></p>
+    <div>  
+  	<p class="lead"><b>Les règles de gestion misent en place sont :</b></p>
     <ul>
-      <c:forEach var="uc" items="${useCases}">
-        <li><p class="lead">${uc}</p></li>
+      <c:forEach var="rg" items="${regleGestion}">
+        <li><p class="lead">${rg}</p></li>
       </c:forEach>
     </ul>
-
   
 
   </div>
+<%@include file="footer.jsp" %>
 </body>
