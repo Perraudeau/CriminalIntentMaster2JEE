@@ -1,16 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page session="false"%>
+<%@include file="/WEB-INF/views/header.jsp" %>
 
-<html>
-<head>
-<title>Poste</title>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/bootstrap.min.css' />">
-</head>
-<body>
+<title>Ajouter un poste</title>
 	<div class="col-sm-offset-1 col-sm-10">
-		<h2>Créer un poste</h2>
+		<h2>Ajouter un poste</h2>
 		<form class="form-horizontal" method="POST">
 			<div class="form-group">
 				<label for="poste_libelle" class="col-sm-2 control-label">Libelle</label>
@@ -35,8 +27,6 @@
 				</div>
 			</div>
 		</form>
-		<a href="/">
-   		<button>Retour à l'accueil</button>
-	</a>
+
 	</div>
 </body>

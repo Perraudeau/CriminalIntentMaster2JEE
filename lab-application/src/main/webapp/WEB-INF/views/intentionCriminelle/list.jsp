@@ -1,15 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page session="false" %>
-
-<html>
-<head>
+<%@include file="/WEB-INF/views/header.jsp" %>
   <title>Liste des intentions criminelles</title>
-  <link rel="stylesheet"
-        type="text/css"
-        href="<c:url value='/resources/bootstrap.min.css' />">
-</head>
-<body>
   <div class="col-sm-offset-1 col-sm-10">
     <h1>Liste des intentions criminelles</h1>
 
@@ -18,8 +8,8 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>LibellÃ©</th>
-            <th>SalariÃ©</th>
+            <th>Libellé</th>
+            <th>Salarié</th>
           </tr>
         <thead>
         <tbody>
@@ -33,8 +23,5 @@
         </tbody>
       </table>
     </div>
-    <a href="/">
-   		<button>Retour Ã  l'accueil</button>
-	</a>
   </div>
 </body>

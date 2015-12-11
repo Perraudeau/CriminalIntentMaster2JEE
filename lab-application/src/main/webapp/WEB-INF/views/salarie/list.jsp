@@ -1,17 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page session="false" %>
 
-<html>
-<head>
-  <title>Liste des salariÃ©s</title>
-  <link rel="stylesheet"
-        type="text/css"
-        href="<c:url value='/resources/bootstrap.min.css' />">
-</head>
-<body>
+<%@include file="/WEB-INF/views/header.jsp" %>
+
+
+  <title>Liste des salariés</title>
+
   <div class="col-sm-offset-1 col-sm-10">
-    <h1>Liste des salariÃ©s</h1>
+    <h1>Liste des salariés</h1>
 
     <div>
       <table id="dataTable" class="table table-striped table-bordered">
@@ -35,8 +29,6 @@
         </tbody>
       </table>
     </div>
-    <a href="/">
-   		<button>Retour Ã  l'accueil</button>
-	</a>
+
   </div>
 </body>
