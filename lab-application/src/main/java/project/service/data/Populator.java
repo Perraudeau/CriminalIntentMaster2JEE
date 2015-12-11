@@ -13,42 +13,41 @@ import project.entity.Service;
 
 @Component
 public class Populator implements ApplicationListener<ContextRefreshedEvent> {
-	@Autowired
-	ServiceDao serviceDao;
-	@Autowired
-	PosteDao posteDao;
-	@Autowired
-	SalarieDao salarieDao;
-	@Autowired
-	IntentionCriminelleDao intentionCriminelleDao;
+  @Autowired
+  ServiceDao serviceDao;
+  @Autowired
+  PosteDao posteDao;
+  @Autowired
+  SalarieDao salarieDao;
+  @Autowired
+  IntentionCriminelleDao intentionCriminelleDao;
 
-	boolean done = false;
+  boolean done = false;
 
-	@Override
-	@Transactional
-	public void onApplicationEvent(ContextRefreshedEvent event) {
-		if (!done) {
+  @Override
+  @Transactional
+  public void onApplicationEvent(ContextRefreshedEvent event) {
+    if (!done) {
 
-			serviceDao.save(new Service("Ressources humaines"));
-			serviceDao.save(new Service("Service commercial"));
-			serviceDao.save(new Service("Direction"));
+      serviceDao.save(new Service("Ressources humaines"));
+      serviceDao.save(new Service("Service commercial"));
+      serviceDao.save(new Service("Direction"));
 
-			posteDao.save(new Poste("Directeur", serviceDao.findByLibelle("Direction")));
-			posteDao.save(new Poste("Commercial", serviceDao.findByLibelle("Service commercial")));
-			posteDao.save(new Poste("Responsable RH", serviceDao.findByLibelle("Ressources humaines")));
+      posteDao.save(new Poste("Directeur", serviceDao.findByLibelle("Direction")));
+      posteDao.save(new Poste("Commercial", serviceDao.findByLibelle("Service commercial")));
+      posteDao.save(new Poste("Responsable RH", serviceDao.findByLibelle("Ressources humaines")));
 
-			salarieDao.save(new Salarie("PERRAUDEAU", "Victor", posteDao.findByName("Directeur")));
-			salarieDao.save(new Salarie("LEROUX", "Alexis", posteDao.findByName("Commercial")));
-			salarieDao.save(new Salarie("BOMBEUR", "Jean", posteDao.findByName("Responsable RH")));
+      salarieDao.save(new Salarie("PERRAUDEAU", "Victor", posteDao.findByName("Directeur")));
+      salarieDao.save(new Salarie("LEROUX", "Alexis", posteDao.findByName("Commercial")));
+      salarieDao.save(new Salarie("BOMBEUR", "Jean", posteDao.findByName("Responsable RH")));
 
-			intentionCriminelleDao
-					.save(new IntentionCriminelle("Laisse trainer son caca", salarieDao.findByName("LEROUX")));
-			intentionCriminelleDao
-					.save(new IntentionCriminelle("Mange la bouche ouverte", salarieDao.findByName("LEROUX")));
-			intentionCriminelleDao
-					.save(new IntentionCriminelle("Fait caca sur les murs", salarieDao.findByName("LEROUX")));
+      intentionCriminelleDao.save(new IntentionCriminelle("Laisse l'evier salle", salarieDao.findByName("LEROUX")));
+      intentionCriminelleDao.save(new IntentionCriminelle("Ne récupère pas ses impressions de la photocopieuse",
+          salarieDao.findByName("LEROUX")));
+      intentionCriminelleDao.save(
+          new IntentionCriminelle("Se gare sur la place réservé aux handicapés", salarieDao.findByName("BOMBEUR")));
 
-			done = true;
-		}
-	}
+      done = true;
+    }
+  }
 }

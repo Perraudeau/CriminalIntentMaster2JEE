@@ -21,7 +21,7 @@ public class PosteDao {
   private EntityManager em;
 
   /*
-   * Return a service from a list of one service. This method is needed for
+   * Return a position from a list of one position. This method is needed for
    * findByNumber and findByName
    */
   private Poste getSingle(List<Poste> postes) {
@@ -34,17 +34,17 @@ public class PosteDao {
     return postes.get(0);
   }
 
-  // Return a service by its Id.
+  // Return a position by its Id.
   public Poste getOne(Long id) {
     return em.find(Poste.class, id);
   }
 
-  // Return a list of all services
+  // Return a list of all positions
   public List<Poste> findAll() {
     return em.createQuery("from Poste p").getResultList();
   }
 
-  // Return a poste from its name
+  // Return a position from its name
   public Poste findByName(String libelle) {
     Query query = em.createQuery("from Poste p where p.libelle = :libelle");
     query.setParameter("libelle", libelle);
@@ -52,7 +52,7 @@ public class PosteDao {
     return getSingle(postes);
   }
 
-  // Return a poste by its service
+  // Return a position by its service
   public Poste findByService(Service service) {
     Query query = em.createQuery("from Poste p where p.service = :service");
     query.setParameter("service", service);
@@ -60,7 +60,7 @@ public class PosteDao {
     return getSingle(postes);
   }
 
-  // Return a poste by its service and nme
+  // Return a position by its service and name
   public Poste findByNameAndService(String libelle, Service service) {
     Query query = em.createQuery("from Poste p where p.service = :service and p.libelle = :libelle");
     query.setParameter("service", service);
@@ -69,7 +69,7 @@ public class PosteDao {
     return getSingle(postes);
   }
 
-  // save the poste in the DB
+  // save the position in the DB
   public void save(Poste p) {
     em.persist(p);
   }

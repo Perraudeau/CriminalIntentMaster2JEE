@@ -16,30 +16,48 @@ import project.service.business.SalarieService;
 @Controller
 @RequestMapping("/salaries")
 public class SalarieController {
-	private final SalarieService service;
+  private final SalarieService service;
 
-	@Autowired
-	public SalarieController(SalarieService service) {
-		this.service = service;
-	}
+  @Autowired
+  public SalarieController(SalarieService service) {
+    this.service = service;
+  }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String findSalaries(Map<String, Object> model) {
-		List<Salarie> salaries = service.findSalaries();
-		model.put("salaries", salaries);
-		return "salarie/list";
-	}
+  /**
+   * List all employees
+   * 
+   * @param model
+   * @return list page
+   */
+  @RequestMapping(method = RequestMethod.GET)
+  public String findSalaries(Map<String, Object> model) {
+    List<Salarie> salaries = service.findSalaries();
+    model.put("salaries", salaries);
+    return "salarie/list";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-	public String showSalarieForm(Map<String, Object> model) {
-		List<Poste> postes = service.findPostes();
-		model.put("postes", postes);
-		return "salarie/edit";
-	}
+  /**
+   * Show the page for create an employee
+   * 
+   * @param model
+   * @return edit page
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+  public String showSalarieForm(Map<String, Object> model) {
+    List<Poste> postes = service.findPostes();
+    model.put("postes", postes);
+    return "salarie/edit";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createSalarie(@RequestParam Map<String, String> champs) {
-		service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
-		return "redirect:/salaries";
-	}
+  /**
+   * handle POST of creation of a new employee
+   * 
+   * @param champs
+   * @return redirect to the list of employees
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public String createSalarie(@RequestParam Map<String, String> champs) {
+    service.createSalarie(champs.get("nom"), champs.get("prenom"), champs.get("poste"));
+    return "redirect:/salaries";
+  }
 }

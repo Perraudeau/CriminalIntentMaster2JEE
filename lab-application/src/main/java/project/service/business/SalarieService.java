@@ -24,29 +24,49 @@ public class SalarieService {
     this.daoP = daoP;
   }
 
-  public Salarie findStudent(Long id) {
-    Salarie salarie = daoS.getOne(id);
-    return salarie;
-  }
-
+  /**
+   * return a employee by its name
+   * 
+   * @param nom
+   * @return employee
+   */
   public Salarie findSalarieByName(String nom) {
     Salarie salarie = daoS.findByName(nom);
     return salarie;
   }
 
+  /**
+   * return a list of all employees
+   * 
+   * @return list of employees
+   */
   public List<Salarie> findSalaries() {
     List<Salarie> salaries = daoS.findAll();
     return salaries;
   }
 
+  /**
+   * return a list of all positions
+   * 
+   * @return list of positions
+   */
   public List<Poste> findPostes() {
     List<Poste> postes = daoP.findAll();
     return postes;
   }
 
+  /**
+   * creation of a new employee and apply managements rules
+   * 
+   * @param nom
+   * @param prenom
+   * @param poste
+   */
   public void createSalarie(String nom, String prenom, String poste) {
+    // check if the employee already exist
     if (daoS.findByNameSurnameAndPoste(nom, prenom, daoP.findByName(poste)) == null) {
       Salarie s = new Salarie(nom, prenom, daoP.findByName(poste));
+      // check if the name and surname are empty
       if (!nom.isEmpty() && !prenom.isEmpty()) {
         daoS.save(s);
       }

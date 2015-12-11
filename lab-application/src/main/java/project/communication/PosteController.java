@@ -16,30 +16,48 @@ import project.service.business.PosteService;
 @Controller
 @RequestMapping("/postes")
 public class PosteController {
-	private final PosteService PosteService;
+  private final PosteService PosteService;
 
-	@Autowired
-	public PosteController(PosteService service) {
-		this.PosteService = service;
-	}
+  @Autowired
+  public PosteController(PosteService service) {
+    this.PosteService = service;
+  }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String findPostes(Map<String, Object> model) {
-		List<Poste> postes = PosteService.findPostes();
-		model.put("postes", postes);
-		return "poste/list";
-	}
+  /**
+   * List all positions
+   * 
+   * @param model
+   * @return list page
+   */
+  @RequestMapping(method = RequestMethod.GET)
+  public String findPostes(Map<String, Object> model) {
+    List<Poste> postes = PosteService.findPostes();
+    model.put("postes", postes);
+    return "poste/list";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-	public String showPosteForm(Map<String, Object> model) {
-		List<Service> listServices = PosteService.findServices();
-		model.put("services", listServices);
-		return "poste/edit";
-	}
+  /**
+   * Show the page for create a position
+   * 
+   * @param model
+   * @return edit page
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+  public String showPosteForm(Map<String, Object> model) {
+    List<Service> listServices = PosteService.findServices();
+    model.put("services", listServices);
+    return "poste/edit";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createPoste(@RequestParam Map<String, String> champs) {
-		PosteService.createPoste(champs.get("libelle"), champs.get("service"));
-		return "redirect:/postes";
-	}
+  /**
+   * handle POST of creation of a new position
+   * 
+   * @param champs
+   * @return redirect to the list of criminal intents
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public String createPoste(@RequestParam Map<String, String> champs) {
+    PosteService.createPoste(champs.get("libelle"), champs.get("service"));
+    return "redirect:/postes";
+  }
 }

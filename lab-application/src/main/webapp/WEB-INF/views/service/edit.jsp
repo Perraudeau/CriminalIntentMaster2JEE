@@ -1,26 +1,24 @@
+<%@include file="/WEB-INF/views/header.jsp"%>
 
-<%@include file="/WEB-INF/views/header.jsp" %>
+<title>Ajouter un service</title>
 
-  <title>Ajouter un service</title>
-
-
-	<div class="col-sm-offset-1 col-sm-10">
-		<h2>Créer un service</h2>
-		<form class="form-horizontal" method="POST">
-			<div class="form-group">
-				<label for="service_libelle" class="col-sm-2 control-label">Libellé</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="service_libelle"
-						name="libelle" />
-				</div>
+<div class="col-sm-offset-1 col-sm-10">
+	<h2>Cr&eacute;er un service</h2>
+	<form class="form-horizontal" method="POST">
+		<div class="form-group">
+			<label for="service_libelle" class="col-sm-2 control-label">Libell&eacute;</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="service_libelle"
+					name="libelle" />
 			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Envoyer</button>
-				</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Envoyer</button>
 			</div>
-		</form>
+		</div>
+	</form>
 
-	</div>
-	  <%@include file="/WEB-INF/views/footer.jsp" %>
+</div>
+<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>

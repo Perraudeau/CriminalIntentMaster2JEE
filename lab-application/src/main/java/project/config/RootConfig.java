@@ -21,6 +21,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 // @EnableAspectJAutoProxy
 @ComponentScan("project.service")
 public class RootConfig {
+  /**
+   * Informations about the database
+   */
   public static final String DRIVER = "org.h2.Driver";
   public static final String URL = "jdbc:h2:tcp://localhost/~/h2db/finalProjectLerouxPerraudeau";
   public static final String USERNAME = "finalProject";

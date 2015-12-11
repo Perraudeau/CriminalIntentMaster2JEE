@@ -15,28 +15,46 @@ import project.service.business.ServiceService;
 @Controller
 @RequestMapping("/services")
 public class ServiceController {
-	private final ServiceService service;
+  private final ServiceService service;
 
-	@Autowired
-	public ServiceController(ServiceService service) {
-		this.service = service;
-	}
+  @Autowired
+  public ServiceController(ServiceService service) {
+    this.service = service;
+  }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String findServices(Map<String, Object> model) {
-		List<Service> services = service.findService();
-		model.put("services", services);
-		return "service/list";
-	}
+  /**
+   * List all services
+   * 
+   * @param model
+   * @return list page
+   */
+  @RequestMapping(method = RequestMethod.GET)
+  public String findServices(Map<String, Object> model) {
+    List<Service> services = service.findService();
+    model.put("services", services);
+    return "service/list";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
-	public String showServiceForm() {
-		return "service/edit";
-	}
+  /**
+   * Show the page for create a service
+   * 
+   * @param model
+   * @return edit page
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.GET, params = "new")
+  public String showServiceForm() {
+    return "service/edit";
+  }
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createService(@RequestParam Map<String, String> champs) {
-		service.createService(champs.get("libelle"));
-		return "redirect:/services";
-	}
+  /**
+   * handle POST of creation of a new service
+   * 
+   * @param champs
+   * @return redirect to the list of services
+   */
+  @RequestMapping(value = "/create", method = RequestMethod.POST)
+  public String createService(@RequestParam Map<String, String> champs) {
+    service.createService(champs.get("libelle"));
+    return "redirect:/services";
+  }
 }

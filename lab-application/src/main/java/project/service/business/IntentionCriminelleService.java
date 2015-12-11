@@ -24,29 +24,49 @@ public class IntentionCriminelleService {
     this.daoS = daoS;
   }
 
-  public IntentionCriminelle findIntentionCriminelle(Long id) {
-    IntentionCriminelle poste = daoIc.getOne(id);
-    return poste;
-  }
-
+  /**
+   * return a criminal intent by its name
+   * 
+   * @param libelle
+   * @return position
+   */
   public IntentionCriminelle findIntentionCriminelleByLibelle(String libelle) {
     IntentionCriminelle ic = daoIc.findByLibelle(libelle);
     return ic;
   }
 
+  /**
+   * Find all criminal intents
+   * 
+   * @return list of criminal intents
+   */
   public List<IntentionCriminelle> findIntentionCriminelles() {
     List<IntentionCriminelle> ics = daoIc.findAll();
     return ics;
   }
 
+  /**
+   * Find all employees
+   * 
+   * @return list of employees
+   */
   public List<Salarie> findSalaries() {
     List<Salarie> salaries = daoS.findAll();
     return salaries;
   }
 
+  /**
+   * creation of a new criminal intention and apply managements rules
+   * 
+   * @param libelle
+   * @param salarie
+   * @return save the criminal intention in database
+   */
   public void createIntentionCriminelle(String libelle, String salarie) {
+    // check if the criminal intent already exist
     if (daoIc.findByLibelleAndSalarie(libelle, daoS.findByName(salarie)) == null) {
       IntentionCriminelle ic = new IntentionCriminelle(libelle, daoS.findByName(salarie));
+      // check if the name is empty
       if (!libelle.isEmpty()) {
         daoIc.save(ic);
       }

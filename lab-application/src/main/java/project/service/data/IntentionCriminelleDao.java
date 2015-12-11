@@ -33,14 +33,17 @@ public class IntentionCriminelleDao {
     return intentionCriminelle.get(0);
   }
 
+  // return one criminal intent
   public IntentionCriminelle getOne(Long id) {
     return em.find(IntentionCriminelle.class, id);
   }
 
+  // return a list of all criminal intents
   public List<IntentionCriminelle> findAll() {
     return em.createQuery("from IntentionCriminelle ic").getResultList();
   }
 
+  // return a criminal intent found by its name
   public IntentionCriminelle findByLibelle(String libelle) {
     Query query = em.createQuery("from IntentionCriminelle ic where ic.libelle = :libelle");
     query.setParameter("libelle", libelle);
@@ -48,6 +51,7 @@ public class IntentionCriminelleDao {
     return getSingle(intentionCriminelle);
   }
 
+  // return a criminal intent found by its employee
   public Object findBySalarie(Salarie salarie) {
     Query query = em.createQuery("from IntentionCriminelle ic where ic.salarie = :salarie");
     query.setParameter("salarie", salarie);
@@ -55,6 +59,7 @@ public class IntentionCriminelleDao {
     return getSingle(intentionCriminelle);
   }
 
+  // return a criminal intent found by its name and employee
   public Object findByLibelleAndSalarie(String libelle, Salarie salarie) {
     Query query = em.createQuery("from IntentionCriminelle ic where ic.libelle = :libelle and ic.salarie = :salarie");
     query.setParameter("libelle", libelle);
@@ -63,6 +68,7 @@ public class IntentionCriminelleDao {
     return getSingle(intentionCriminelle);
   }
 
+  // save the criminal intent into database
   public void save(IntentionCriminelle ic) {
     em.persist(ic);
   }

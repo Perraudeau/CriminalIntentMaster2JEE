@@ -20,29 +20,44 @@ public class ServiceService {
     this.dao = dao;
   }
 
-  public Service findService(Long id) {
-    Service service = dao.getOne(id);
-    return service;
-  }
-
+  /**
+   * return a service by its name
+   * 
+   * @param libelle
+   * @return service
+   */
   public Service findServiceByLibelle(String libelle) {
     Service service = dao.findByLibelle(libelle);
     return service;
   }
 
+  /**
+   * return a list of all services
+   * 
+   * @return list of service
+   */
   public List<Service> findService() {
     List<Service> services = dao.findAll();
     return services;
   }
 
+  /**
+   * creation of a new service and apply managements rules
+   * 
+   * @param nom
+   * @param prenom
+   * @param poste
+   */
   public void createService(String libelle) {
     Service s = null;
 
-    // This part avoid to recreate clone of services
+    // check if the service already exist
     if (dao.findByLibelle(libelle) != null) {
       s = dao.findByLibelle(libelle);
     } else {
       s = new Service(libelle);
+
+      // check if the name of the service already exist
       if (!libelle.isEmpty()) {
         dao.save(s);
       }
